@@ -29,4 +29,8 @@ it should use today’s date to get the month and year.
 
 import sys
 import calendar
+import inspect
 from datetime import datetime
+
+cal = calendar
+print(inspect.getmembers(cal))
