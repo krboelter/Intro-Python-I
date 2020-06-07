@@ -29,8 +29,24 @@ it should use today’s date to get the month and year.
 
 import sys
 import calendar
-import inspect
 from datetime import datetime
 
-cal = calendar
-print(inspect.getmembers(cal))
+
+def make_calendar():
+    month = 0
+    year = 0
+
+    c_year, c_month, c_mix = str(datetime.now()).split("-")
+    c_day, c_time = c_mix.split(" ")
+
+    if len(sys.argv) == 1:
+        print("\n", calendar.month(int(c_year), int(c_month), 3))
+    elif len(sys.argv) == 2:
+        print("2 arguements are required: [month] [year]")
+    else:
+        month = int(sys.argv[1])
+        year = int(sys.argv[2])
+        print("\n", calendar.month(year, month, 3))
+
+
+make_calendar()
